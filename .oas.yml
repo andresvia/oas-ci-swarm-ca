@@ -1,4 +1,4 @@
-project_name: oas-swarm-ca
+project_name: oas-ci-swarm-ca
 project_description: Crea el CA del Docker Swarm de OAS
 project_purpose: Crear y administrar CA y certificados de servidor del Docker Swarm de CI
 organizational_unit: Plataforma

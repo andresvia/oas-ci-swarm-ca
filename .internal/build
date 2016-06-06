@@ -4,10 +4,10 @@ set -eu
 if [ "$(uname -sm)" = "Linux x86_64" ]
 then
   GO_BUILD="go build -v"
-  GO_ARTIFACT="oas-swarm-ca"
+  GO_ARTIFACT="oas-ci-swarm-ca"
 else
   GO_BUILD="gox -os Linux -arch amd64"
-  GO_ARTIFACT="oas-swarm-ca_linux_amd64"
+  GO_ARTIFACT="oas-ci-swarm-ca_linux_amd64"
 fi
 # oas build context
 OAS_CURRENT_TAG="$(git tag | tail -n1)"
@@ -26,7 +26,7 @@ else
   OAS_VERSION_META="local.$(date +%s)"
 fi
 OAS_VERSION="${OAS_VERSION_MAJOR}.${OAS_VERSION_MINOR}.${OAS_VERSION_PATCH}-${OAS_VERSION_META}"
-OAS_NAME="oas-swarm-ca"
+OAS_NAME="oas-ci-swarm-ca"
 
 export OAS_VERSION
 export OAS_NAME
@@ -51,7 +51,7 @@ fi
 if fpm --help > /dev/null
 then
   set -x
-  fpm --description 'Crea el CA del Docker Swarm de OAS' --package target -C target-root -s dir -t rpm --name "oas-swarm-ca" --version "${OAS_VERSION}" --before-install scripts/before-install --after-install scripts/after-install --before-remove scripts/before-remove --after-remove scripts/after-remove --before-upgrade scripts/before-upgrade --after-upgrade scripts/after-upgrade --rpm-os linux --rpm-sign .
+  fpm --description 'Crea el CA del Docker Swarm de OAS' --package target -C target-root -s dir -t rpm --name "oas-ci-swarm-ca" --version "${OAS_VERSION}" --before-install scripts/before-install --after-install scripts/after-install --before-remove scripts/before-remove --after-remove scripts/after-remove --before-upgrade scripts/before-upgrade --after-upgrade scripts/after-upgrade --rpm-os linux --rpm-sign .
 else
   echo no se encontró fpm
   exit 1
