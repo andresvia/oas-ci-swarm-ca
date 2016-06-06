@@ -1,0 +1,19 @@
+addons:
+  apt:
+    packages:
+    - ruby-dev
+    - gcc
+    - make
+    - rpm
+before_install:
+- gem install fpm
+script: make
+deploy:
+  provider: releases
+  api_key:
+    secure: Zts1smEAOWGF29Ha2cX0i7AQ6C8NPPMHHSOpjsJmnXpmDVhd0VxY434pzxobUZ2JkcVnzLSw0onptQXPCK89I+Nk2xfoofTTQy8mXAop4U7caOQEFUo4LfUXiRMNuiotsJ8A6ZdnJ5RNDnQ0Oe3WSNQY9tBkHZo1CaOMWGnhFi/kY7VmUIToL+I06w/2sqYIIdjm+U46FLQzmpcLEa/INEF1eQK+g7shM7Lkh4Q8TMkT1h7hE0aVgYvoqPp/yV8YLFFeh2mgnrWc0vURe0iiTzOZMKtHBxlNYQoYRHbPem+gYwH2kPizZOw0Jne8e+kb0Ipzt9daxNDjYLetKSDxTnA+VdxrDpgQ0xqnrpHjNl7Ey0L0Hwb/x4P9BMqHficuYj5UuPBGPP+wwvlx+yF+lQPJE5R0QgKnpovvRRujfsisywlVE7W2wq1NlqQlniRiQ9T4Q98Y9DEO/xe1EcxlWdXqLoFHtFJLH9L24YmyVPEQg0mFZCWATlGg3ssREarLMLlnD5l2Ioz6n5QTnyh2PIERxDCXfkUIPcw3W4PgW/Gd+LVTN07xu0cy2cAIJ2wqPm902xciY7nbAZIu/Qx0kqWXdJ2jJfEU8mw6o8p+Pt0NY0CcRDlC24SZZd+danTgOIHGccZ6+m/jxVNCKkMjBQAF89a2lDLD/wxalkbqsZw=
+  file_glob: true
+  file: target/*
+  skip_cleanup: true
+  on:
+    tags: true
